@@ -1,0 +1,53 @@
+<div class="my-paginator my-page">
+    <div class="page-nav-container">
+        <a [ngClass]="{'ui-state-disabled':isFirstPage()}" (click)="changePageToPrev()">
+            <span class="page-nav icon-Arrow-Left"><</span>
+        </a>
+        <span>Page <span>{{currentPage}}</span> <ng-container translate>of </ng-container> <span>{{pageCount}}</span></span>
+        <a [ngClass]="{'ui-state-disabled':isLastPage()}" (click)="changePageToNext()">
+            <span class="page-nav icon-Arrow-Right">></span>
+        </a>
+    </div>
+
+    <div class="page-jump-container">
+        <a class="page-jump" [class.page-jump-color] = "showPageSelectionOverlay" (click)="onJumpToClick($event)">
+            <span>JumpTo</span>
+        </a>
+        <ng-container *ngTemplateOutlet="showPageSelectionOverlay ? pageSelectionOverlay: null"></ng-container>
+    </div>
+
+    <p-dropdown *ngIf="rowsPerPageItems"
+                class="page-items-dropdown"
+                [scrollHeight]="dropdownScrollHeight"
+                [options]="rowsPerPageItems"
+                autoWidth="false"
+                [(ngModel)]="rowsPerPage"
+                (onChange)="onRppChange()"></p-dropdown>
+    <span *ngIf="rowsPerPageItems">per page</span>
+</div>
+
+<ng-template #pageSelectionOverlay>
+    <div class="page-selection-overlay" clickOutside (clickedOutside) = "clickedOutsidePaginator($event)"
+         [class.page-selection-overlay-up] = "showPageSelectionUp">
+        <div class="page-selection-wrapper">
+            <span class="page-text">Page</span>
+            <input class="page-input" #pageInputObj
+                   type="text"
+                   [(ngModel)]="inputPage"
+                   (keyup)="handleKeyboardEvent($event)"/>
+            <span class="last-page-number">of <span>{{pageCount}}</span></span>
+            <button class="go-button" [ngClass]="{'ui-state-disabled' : disableGoButton}" pButton (click)="onPageJumpClick()">Go</button>
+        </div>
+        <div class="partition"></div>
+        <div class="first-last-page-wrapper ui-g">
+            <a class="ui-g-6 first-page" [ngClass]="{'ui-state-disabled':isFirstPage()}" (click)="changePageToFirst()">
+                <span translate>FirstPage</span>
+            </a>
+            <a class="ui-g-6 last-page" [ngClass]="{'ui-state-disabled':isLastPage()}" (click)="changePageToLast()">
+                <span translate>LastPage</span>
+            </a>
+        </div>
+    </div>
+</ng-template>
+
+

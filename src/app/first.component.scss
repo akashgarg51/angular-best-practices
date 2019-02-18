@@ -1,0 +1,11 @@
+.my-header {
+  color: darkred;
+}
+
+.first-page-link {
+  color: blue;
+}
+
+:host ::ng-deep .my-paginator {
+  background-color: red !important;
+}

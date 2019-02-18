@@ -1,0 +1,104 @@
+.my-paginator {
+    background-color: lightgrey;
+}
+
+.my-page {
+    margin: 50px;
+    padding: .125em;
+    display: inline-block;
+    font-size: 0.95em;
+    border: 1px solid #9AC626;
+
+    .page-nav-container {
+        display: inline-block;
+    }
+
+    .page-nav {
+        color: #9AC626;
+    }
+
+    a.ui-state-disabled, button.ui-state-disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    .page-jump-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .page-jump {
+        display: block;
+        color: #9AC626;
+        padding: 0.3em;
+        margin-left: 0.8em;
+        font-size: 0.95em;
+    }
+
+    .page-jump-color {
+        background-color: #676668;
+    }
+
+    .page-items-dropdown {
+        margin-left: 1.1em;
+    }
+
+    .page-selection-overlay {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        width: max-content;
+        z-index: 9999;
+        color: white;
+        background-color: #676668;
+        padding: 0em 0.5em;
+
+        .page-selection-wrapper {
+            padding: 0.6em;
+        }
+
+        .partition {
+            border-top: 1.5px solid grey;
+        }
+
+        .page-text {
+            padding: 0.2em;
+        }
+
+        .page-input {
+            width: 3.5em;
+        }
+
+        .last-page-number {
+            padding: 0.2em;
+        }
+
+        .go-button {
+            width: 3.5em;
+            height: 1.5em;
+            line-height: 1.4em;
+        }
+
+        .first-last-page-wrapper {
+            padding: 0.1em;
+        }
+
+        .first-page, .last-page {
+            color: #9AC626;
+            text-align: center;
+            font-size: 0.95em;
+        }
+    }
+    .page-selection-overlay-up {
+        bottom: 1.6em;
+        flex-direction: column-reverse !important;
+    }
+}
+
+:host ::ng-deep .custom-paginator {
+    .ui-dropdown {
+        min-width: 4em;
+        width: auto !important;
+    }
+}

@@ -1,0 +1,7 @@
+.my-header {
+  color: darkorange;
+}
+
+:host ::ng-deep .my-paginator {
+  background-color: green !important;
+}
